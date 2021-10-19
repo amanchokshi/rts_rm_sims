@@ -54,6 +54,8 @@ mkdir $WORKDIR
 cp ./1120082744_template/* $WORKDIR
 cd $WORKDIR
 
+echo "Running the RTS from ${WORKDIR}"
+
 sed -i "s/META/${META}/g" rts_rm_sim.in
 sed -i "s/WORKDIR/${WORKDIR}/g" rts_rm_sim.in
 sed -i "s/CALBEAM/${CALBEAM}/g" rts_rm_sim.in
