@@ -1,0 +1,20 @@
+// Disable dipole amplitudes (and flagging)
+DisableDipoleFlags=1
+
+// Use dipole amplitudes when calibrating
+UseDipoleAmplitudes=1
+
+// Sourcelist is set below for sim and calibration
+SimCatalogueFile=srclist_EOR0_1Source.txt
+SourceCatalogueFile=srclist_EOR0_1Source.txt
+
+// Change where image is centered
+ObservationImageCentreRA=0.696091942576 (decimal hours)
+ObservationImageCentreDec=-26.7879297384 (deg)
+
+// If 1120082744_DipAmps.metafits is use in rts.in file
+// the beam dipole amps will be automatically read unless
+// DisableDipoleFlags=1
+
+// If UseDipoleAmplitudes=1 is set, use deformed beam diplole
+// amps from 1120082744_DipAmps.metafits for cali as well as sim

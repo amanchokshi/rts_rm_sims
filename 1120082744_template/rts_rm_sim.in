@@ -1,0 +1,167 @@
+// RTS .in file for running RM simulation & calibration on EoR0 Field.
+// Used to generate BandpassCalibration and DI_JonesMatrices calibration
+
+// A Simulation with modified metafits files which have dipole amplitudes
+// denoting various deformed beams. The sim sourcelist has 5 rm sources
+// at phase center +- 5 deg. A single bright calibrator is placed at
+// the phase center for calibration.
+
+//----------------------------------------------//
+// Options describing the data and the instrument
+//----------------------------------------------//
+
+// Data will come from the raw gpubox files
+ReadAllFromSingleFile=1
+// ReadGpuboxDirect=1
+// BaseFilename=/astro/mwaeor/MWA/data/1061316296/*_gpubox
+
+// Sets coarse band numbers to be processed in the case where full band (24 coarse channels) not being processed
+// SubBandIDs=1
+
+// skip the first time step
+StartProcessingAt=0
+
+// Use Cotter mwaf flags
+// ImportCotterFlags=1
+// ImportCotterBasename=/astro/mwaeor/MWA/data/1061316296/RTS_1061316296
+
+// The RTS has an internal RFI flagger which tries to identify and
+// flag out bad fine channels. It should probably not be used if the Cotter
+// flags are also being read.
+doRFIflagging=0
+
+// Read metadata from metafits
+ReadMetafitsFile=1
+// MetafitsFilename=/fred/oz048/achokshi/rts-rm-sims/1120082744_template/1120082744_DipAmps
+MetafitsFilename=/fred/oz048/achokshi/rts-rm-sims/WORKDIR/META
+
+// Work at 40khz (FscrunchChan = number of fine channels to average)
+NumberOfDevices=1
+FscrunchChan=1
+
+// In the case where the metafits are unavailable, it is possible
+// to read metadata from text files. The array file specifies the instrument
+// layout. At the moment, it needs to be specified even if not used
+ArrayFile=array_file.txt
+
+// MWA Phase I+II
+ArrayNumberOfStations=128
+
+// Number of Fine Channels per coarse channel (gpubox)
+NumberOfChannels=32
+
+// For MWA
+ArrayPositionLat=-26.70331940
+ArrayPositionLong=116.67081524
+
+// Apply known cable, digital gain, and pfb corrections
+doMWArxCorrections=0
+// doRawDataCorrections=1
+
+// For FEE beam, disable fast beam models, set the TileBeamType to 1 and
+// specify the path to the hdf5 file containing the FEE models
+//useFastPrimaryBeamModels=1
+TileBeamType=1
+hdf5Filename=/fred/oz048/bpindor/mwa-RTS/src/MWA_embedded_element_pattern_V02.h5
+
+//mjd at start of observation
+//time is needed to set lst, even if ObservationTimeBase is set.
+ObservationTimeBase=2457208.42045
+
+// Frequency at middle of lowest fine channel in observation, in MHz
+ObservationFrequencyBase=169.595
+
+// Max frequency affect uv grid size but also baseline binning via
+// maximum allowed decorrelation
+MaxFrequency=200
+
+// Fine channel bandwidth in MHz
+ChannelBandwidth=0.04
+
+// Beam pointing centre, superseded by tile delays if available from metafits
+// ObservationPointCentreHA=-0.0
+// ObservationPointCentreDec=-26.7033194
+
+// Desired imaging/phase centre if imaging/writing uvfits
+ObservationImageCentreRA=0.696091942576
+ObservationImageCentreDec=-26.7879297384
+
+// These parameters indicate how much data the RTS should use in each
+// iteration (timestep). In this case, we will use 64s of data (128 * 0.5)
+// in a single timestep to generate the calibration solutions
+CorrDumpTime=2
+CorrDumpsPerCadence=32
+NumberOfIterations=1
+
+// This parameter sets the number of bins which will be used for the
+// baseline-dependent averaging. The bins are every power of two,
+// so in this case, 7 bins corresponds to 64,32,16,8,4,2,1s
+NumberOfIntegrationBins=5
+NumberOfIterations=1
+
+//----------------------------------------------//
+// Options describing the calibration
+//----------------------------------------------//
+
+// Run the Calibrator Measurement Loop (rather than just imaging for example)
+DoCalibration=1
+
+// Set these values to indicate that the RTS will generate its own
+// Calibration solutions for this obsid rather than reading
+// previously generated values
+
+generateDIjones=1
+useStoredCalibrationFiles=0
+applyDIcalibration=1
+
+// Path to sourcelist containing clibration source (sky model)
+// SourceCatalogueFile=/fred/oz048/achokshi/rts-rm-sims/1120082744_template/srclist_cal_1source_EoR0.txt
+SourceCatalogueFile=/fred/oz048/achokshi/rts-rm-sims/WORKDIR/srclist_cal_1source_EoR0.txt
+
+// Sets a cutoff and taper on short baselines used for calibration
+calBaselineMin=20.0
+calShortBaselineTaper=40.0
+
+// There is only one calibrator (with 1000 components)
+NumberOfCalibrators=1
+NumberOfSourcesToPeel=0
+
+//----------------------------------------------//
+// Options describing the simulation
+//----------------------------------------------//
+
+SimulatorMode=1
+NumberOfSimSources=5
+// SimCatalogueFile=/fred/oz048/achokshi/rts-rm-sims/1120082744_template/srclist_sim_5rm_EoR0.txt
+SimCatalogueFile=/fred/oz048/achokshi/rts-rm-sims/WORKDIR/srclist_sim_5rm_EoR0.txt
+
+//----------------------------------------------//
+// Options describing dipole amps & flagging
+//----------------------------------------------//
+
+// Disable dipole amplitudes (and flagging)
+// Results in perfect fee beam being used
+DisableDipoleFlags=0
+
+// Use dipole amplitudes when calibrating
+// if set to 0, use FEE beam with no flags used to calibrate
+// UseDipoleAmplitudes=1
+UseDipoleAmplitudes=CALBEAM
+
+//----------------------------------------------//
+// Options describing the outputs
+//----------------------------------------------//
+
+// Sets oversampling of imaging pixel (float. Default value is 3)
+ImageOversampling=5
+
+MakeImage=1
+FieldOfViewDegrees=15
+MakeStokesSnapshots=1
+StorePixelMatrices=0
+
+imgUniformWeighting=1
+imgRobustWeighting=1
+imgRobustnessParameter=-1
+
+//----------------------------------------------//

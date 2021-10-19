@@ -1,0 +1,61 @@
+#!/bin/bash
+
+echo '---------------------------'
+echo "Configure RTS RM SIMULATION"
+echo -e '---------------------------\n'
+
+# Beam model for sim
+while true
+do
+ read -r -p "Use deformed FEE model for simulation? [Y/n] " input
+
+ case $input in
+     [yY][eE][sS]|[yY])
+ META='1120082744_DipAmps'
+ SIM=DEF
+ break
+ ;;
+     [nN][oO]|[nN])
+ META='1120082744'
+ SIM=FEE
+ break
+        ;;
+     *)
+ echo "Invalid input..."
+ ;;
+ esac
+done
+
+
+# Beam model for calibration
+while true
+do
+ read -r -p "Use deformed FEE model for calibration? [Y/n] " input
+
+ case $input in
+     [yY][eE][sS]|[yY])
+ CALBEAM='1'
+ CAL=DEF
+ break
+ ;;
+     [nN][oO]|[nN])
+ CALBEAM='0'
+ CAL=FEE
+ break
+        ;;
+     *)
+ echo "Invalid input..."
+ ;;
+ esac
+done
+
+WORKDIR="1120082744_${SIM}_${CAL}"
+mkdir $WORKDIR
+cp ./1120082744_template/* $WORKDIR
+cd $WORKDIR
+
+sed -i '' "s/META/${META}/g" rts_rm_sim.in
+sed -i '' "s/WORKDIR/${WORKDIR}/g" rts_rm_sim.in
+sed -i '' "s/CALBEAM/${CALBEAM}/g" rts_rm_sim.in
+
+sbatch ./sRTS_1120082744.sh
