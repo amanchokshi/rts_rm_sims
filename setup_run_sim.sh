@@ -49,12 +49,14 @@ do
  esac
 done
 
-WORKDIR="1120082744_${SIM}_${CAL}"
-mkdir $WORKDIR
-cp ./1120082744_template/* $WORKDIR
-cd $WORKDIR
+echo -en "Optional - enter suffix for output directory " && read -r SUF
 
-echo "Running the RTS from ${WORKDIR}"
+WORKDIR="1120082744_${SIM}_${CAL}_${SUF}"
+mkdir "$WORKDIR"
+cp ./1120082744_template/* "$WORKDIR"
+cd "$WORKDIR"
+
+echo "Running the RTS from ./${WORKDIR}"
 
 sed -i "s/META/${META}/g" rts_rm_sim.in
 sed -i "s/WORKDIR/${WORKDIR}/g" rts_rm_sim.in
