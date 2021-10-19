@@ -130,9 +130,9 @@ NumberOfSourcesToPeel=0
 //----------------------------------------------//
 
 SimulatorMode=1
-NumberOfSimSources=1
+NumberOfSimSources=2
 // SimCatalogueFile=/fred/oz048/achokshi/rts_rm_sims/1120082744_template/srclist_sim_5rm_EoR0.txt
-SimCatalogueFile=/fred/oz048/achokshi/rts_rm_sims/WORKDIR/srclist_sim_5rm_EoR0_v3.txt
+SimCatalogueFile=/fred/oz048/achokshi/rts_rm_sims/WORKDIR/srclist_sim_5rm_EoR0_v4.txt
 
 //----------------------------------------------//
 // Options describing dipole amps & flagging
