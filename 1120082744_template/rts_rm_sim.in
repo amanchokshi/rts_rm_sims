@@ -91,7 +91,6 @@ ObservationImageCentreDec=-26.7879297384
 // in a single timestep to generate the calibration solutions
 CorrDumpTime=2
 CorrDumpsPerCadence=32
-NumberOfIterations=1
 
 // This parameter sets the number of bins which will be used for the
 // baseline-dependent averaging. The bins are every power of two,
@@ -133,7 +132,8 @@ NumberOfSourcesToPeel=0
 SimulatorMode=1
 NumberOfSimSources=5
 // SimCatalogueFile=/fred/oz048/achokshi/rts_rm_sims/1120082744_template/srclist_sim_5rm_EoR0.txt
-SimCatalogueFile=/fred/oz048/achokshi/rts_rm_sims/WORKDIR/srclist_sim_5rm_EoR0.txt
+// v2 = sources in decreasing dec from phase center 1, 2, 5, 7, 10
+SimCatalogueFile=/fred/oz048/achokshi/rts_rm_sims/WORKDIR/srclist_sim_5rm_EoR0_v2.txt
 
 //----------------------------------------------//
 // Options describing dipole amps & flagging
@@ -153,7 +153,8 @@ UseDipoleAmplitudes=CALBEAM
 //----------------------------------------------//
 
 // Sets oversampling of imaging pixel (float. Default value is 3)
-ImageOversampling=5
+// ImageOversampling=5
+ImageOversampling=3
 
 MakeImage=1
 FieldOfViewDegrees=15
