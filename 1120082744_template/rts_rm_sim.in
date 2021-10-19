@@ -156,7 +156,7 @@ UseDipoleAmplitudes=CALBEAM
 ImageOversampling=3
 
 MakeImage=1
-FieldOfViewDegrees=15
+FieldOfViewDegrees=5
 MakeStokesSnapshots=1
 StorePixelMatrices=0
 
