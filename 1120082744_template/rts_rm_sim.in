@@ -130,10 +130,9 @@ NumberOfSourcesToPeel=0
 //----------------------------------------------//
 
 SimulatorMode=1
-NumberOfSimSources=5
+NumberOfSimSources=1
 // SimCatalogueFile=/fred/oz048/achokshi/rts_rm_sims/1120082744_template/srclist_sim_5rm_EoR0.txt
-// v2 = sources in decreasing dec from phase center 1, 2, 5, 7, 10
-SimCatalogueFile=/fred/oz048/achokshi/rts_rm_sims/WORKDIR/srclist_sim_5rm_EoR0_v2.txt
+SimCatalogueFile=/fred/oz048/achokshi/rts_rm_sims/WORKDIR/srclist_sim_5rm_EoR0_v3.txt
 
 //----------------------------------------------//
 // Options describing dipole amps & flagging
