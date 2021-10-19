@@ -32,8 +32,8 @@ doRFIflagging=0
 
 // Read metadata from metafits
 ReadMetafitsFile=1
-// MetafitsFilename=/fred/oz048/achokshi/rts-rm-sims/1120082744_template/1120082744_DipAmps
-MetafitsFilename=/fred/oz048/achokshi/rts-rm-sims/WORKDIR/META
+// MetafitsFilename=/fred/oz048/achokshi/rts_rm_sims/1120082744_template/1120082744_DipAmps
+MetafitsFilename=/fred/oz048/achokshi/rts_rm_sims/WORKDIR/META
 
 // Work at 40khz (FscrunchChan = number of fine channels to average)
 NumberOfDevices=1
@@ -115,8 +115,8 @@ useStoredCalibrationFiles=0
 applyDIcalibration=1
 
 // Path to sourcelist containing clibration source (sky model)
-// SourceCatalogueFile=/fred/oz048/achokshi/rts-rm-sims/1120082744_template/srclist_cal_1source_EoR0.txt
-SourceCatalogueFile=/fred/oz048/achokshi/rts-rm-sims/WORKDIR/srclist_cal_1source_EoR0.txt
+// SourceCatalogueFile=/fred/oz048/achokshi/rts_rm_sims/1120082744_template/srclist_cal_1source_EoR0.txt
+SourceCatalogueFile=/fred/oz048/achokshi/rts_rm_sims/WORKDIR/srclist_cal_1source_EoR0.txt
 
 // Sets a cutoff and taper on short baselines used for calibration
 calBaselineMin=20.0
@@ -132,8 +132,8 @@ NumberOfSourcesToPeel=0
 
 SimulatorMode=1
 NumberOfSimSources=5
-// SimCatalogueFile=/fred/oz048/achokshi/rts-rm-sims/1120082744_template/srclist_sim_5rm_EoR0.txt
-SimCatalogueFile=/fred/oz048/achokshi/rts-rm-sims/WORKDIR/srclist_sim_5rm_EoR0.txt
+// SimCatalogueFile=/fred/oz048/achokshi/rts_rm_sims/1120082744_template/srclist_sim_5rm_EoR0.txt
+SimCatalogueFile=/fred/oz048/achokshi/rts_rm_sims/WORKDIR/srclist_sim_5rm_EoR0.txt
 
 //----------------------------------------------//
 // Options describing dipole amps & flagging
