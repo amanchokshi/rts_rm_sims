@@ -12,7 +12,7 @@
 #SBATCH -e cube-%A.err
 
 WORKDIR=$1
-RTS_RM=/fred/oz048/achokshi/rts_rm_pipeline/
+RTS_RM=/fred/oz048/achokshi/rts_rm_sims/
 DATA_DIR="${RTS_RM}/${WORKDIR}"
 
 # Nuke python 2.7 stuff from .profile
