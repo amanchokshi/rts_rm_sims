@@ -62,4 +62,5 @@ sed -i "s/META/${META}/g" rts_rm_sim.in
 sed -i "s/WORKDIR/${WORKDIR}/g" rts_rm_sim.in
 sed -i "s/CALBEAM/${CALBEAM}/g" rts_rm_sim.in
 
-sbatch ./sRTS_1120082744.sh
+SETUP_JOB_0=$(sbatch  ./sRTS_1120082744.sh | cut -d " " -f 4)
+REFLAG_JOB_0=$(sbatch  --dependency=afterok:$SETUP_JOB_0 ./rts_cube/cube_rts.sh $WORKDIR | cut -d " " -f 4)
