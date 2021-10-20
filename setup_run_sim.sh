@@ -53,7 +53,7 @@ echo -en "Optional - enter suffix for output directory " && read -r SUF
 
 WORKDIR="1120082744_${SIM}_${CAL}_${SUF}"
 mkdir "$WORKDIR"
-cp ./rts_rm_pipeline/* "$WORKDIR"
+cp -r ./rts_rm_pipeline/* "$WORKDIR"
 cd "$WORKDIR"
 
 echo "Running the RTS from ./${WORKDIR}"
