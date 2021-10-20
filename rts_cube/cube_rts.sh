@@ -15,6 +15,9 @@ WORKDIR=$1
 RTS_RM=/fred/oz048/achokshi/rts_rm_sims/
 DATA_DIR="${RTS_RM}/${WORKDIR}"
 
+# Nuke python 2.7 stuff from .profile
+export PYTHONPATH=
+
 module purge
 module load gcc/6.4.0
 module load openmpi/3.0.0
