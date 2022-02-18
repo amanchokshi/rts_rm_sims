@@ -73,4 +73,4 @@ sed -i "s|TAG|${TAG}|g" cuffs/cuffs_parset.in
 
 RTS_JOB=$(sbatch  ./sRTS_1120082744.sh | cut -d " " -f 4)
 CUBE_JOB=$(sbatch  --dependency=afterok:$RTS_JOB ./rts_cube/cube_rts.sh $WORKDIR | cut -d " " -f 4)
-CUFFS_JOB=$(sbatch  --dependency=afterok:$CUBE_JOB ./cuffs.cuffs.sh | cut -d " " -f 4)
+CUFFS_JOB=$(sbatch  --dependency=afterok:$CUBE_JOB ./cuffs/cuffs.sh | cut -d " " -f 4)
