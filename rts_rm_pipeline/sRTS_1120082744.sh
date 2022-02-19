@@ -13,7 +13,7 @@
 #SBATCH --gres=gpu:1
 
 srun --export=ALL --mem=20000 --ntasks=25  --nodes=25 --gres=gpu:1  --ntasks-per-node=1 \
-    /fred/oz048/bpindor/mwa-RTS/bin/rts_gpu rts_rm_sim.in > "srun.${SLURM_JOB_ID}.log"
+    /fred/oz048/achokshi/software/mwa-RTS/bin/rts_gpu rts_rm_sim.in > "srun.${SLURM_JOB_ID}.log"
 
 mkdir -p imgs/instr && mkdir -p imgs/stokes
 mv ./*img*.fits imgs/instr
