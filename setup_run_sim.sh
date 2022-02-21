@@ -162,6 +162,6 @@ sed -i "s|TAG|${TAG}|g" cuffs_parset.in
 #                                   #
 #####################################
 
-RTS_JOB=$(sbatch  ./sRTS_1120082744.sh | cut -d " " -f 4)
+RTS_JOB=$(sbatch  sbatch_rts.sh | cut -d " " -f 4)
 CUBE_JOB=$(sbatch  --dependency=afterok:$RTS_JOB cube_rts.sh $WORKDIR | cut -d " " -f 4)
 CUFFS_JOB=$(sbatch  --dependency=afterok:$CUBE_JOB cuffs.sh | cut -d " " -f 4)
