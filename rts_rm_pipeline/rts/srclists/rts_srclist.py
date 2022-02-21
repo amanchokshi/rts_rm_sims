@@ -187,7 +187,8 @@ if __name__ == "__main__":
     Path(args.out_dir).mkdir(parents=True, exist_ok=True)
 
     with open(yaml_cfg, 'r') as stream:
-        config = yaml.load(stream, Loader=yaml.CLoader)
+        # config = yaml.load(stream, Loader=yaml.CLoader)
+        config = yaml.safe_load(stream)
         
     freqs = np.arange(
             config['sim_freqs']['low_freq'], 
