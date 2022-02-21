@@ -24,12 +24,12 @@ select file in "${srclist_files[@]}"; do
     elif [[ -z $file ]]; then
         echo 'Invalid choice, try again' >&2
     else
-         yml_cfg=${PWD}/${file}
-         echo "RTS srclist config file is: ${yml_cfg}"
+        yml_cfg=${PWD}/${file}
+        cfg_file_name=$(echo ${file} | cut -d "." -f 1)
+        echo -e "RTS srclist config file is: ${yml_cfg}\n"
         break
     fi
 done
-
 
 #####################################
 #                                   #
@@ -37,58 +37,59 @@ done
 #                                   # 
 #####################################
 
-# while true
-# do
-#  read -r -p "Use deformed FEE model for simulation? [Y/n] " input
-# 
-#  case $input in
-#      [yY][eE][sS]|[yY])
-#  META='1120082744_DipAmps'
-#  SIM=DEF
-#  break
-#  ;;
-#      [nN][oO]|[nN])
-#  META='1120082744'
-#  SIM=FEE
-#  break
-#         ;;
-#      *)
-#  echo "Invalid input..."
-#  ;;
-#  esac
-# done
-# 
-# 
-# #####################################
-# #                                   #
-# #     Beam model for calibration    #
-# #                                   # 
-# #####################################
-# 
-# while true
-# do
-#  read -r -p "Use deformed FEE model for calibration? [Y/n] " input
-# 
-#  case $input in
-#      [yY][eE][sS]|[yY])
-#  CALBEAM='1'
-#  CAL=DEF
-#  break
-#  ;;
-#      [nN][oO]|[nN])
-#  CALBEAM='0'
-#  CAL=FEE
-#  break
-#         ;;
-#      *)
-#  echo "Invalid input..."
-#  ;;
-#  esac
-# done
-# 
-# echo -en "Optional - enter suffix for output directory " && read -r SUF
-# 
-# WORKDIR="1120082744_${SIM}_${CAL}_${SUF}"
+while true
+do
+ read -r -p "Use deformed FEE model for simulation? [Y/n] " input
+
+ case $input in
+     [yY][eE][sS]|[yY])
+ META='1120082744_DipAmps'
+ SIM=DEF
+ break
+ ;;
+     [nN][oO]|[nN])
+ META='1120082744'
+ SIM=FEE
+ break
+        ;;
+     *)
+ echo "Invalid input..."
+ ;;
+ esac
+done
+
+
+#####################################
+#                                   #
+#     Beam model for calibration    #
+#                                   # 
+#####################################
+
+while true
+do
+ read -r -p "Use deformed FEE model for calibration? [Y/n] " input
+
+ case $input in
+     [yY][eE][sS]|[yY])
+ CALBEAM='1'
+ CAL=DEF
+ break
+ ;;
+     [nN][oO]|[nN])
+ CALBEAM='0'
+ CAL=FEE
+ break
+        ;;
+     *)
+ echo "Invalid input..."
+ ;;
+ esac
+done
+
+echo -en "Optional - enter suffix for output directory " && read -r SUF
+
+WORKDIR="${cfg_file_name}/1120082744_${SIM}_${CAL}_${SUF}"
+echo $WORKDIR
 # mkdir "$WORKDIR"
 # cp -r ./rts_rm_pipeline/* "$WORKDIR"
 # cp -r ./cuffs "$WORKDIR"
