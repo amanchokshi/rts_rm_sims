@@ -1,3 +1,5 @@
+# RTS beam_tools branch
+
 // Disable dipole amplitudes (and flagging)
 DisableDipoleFlags=1
 
