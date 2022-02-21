@@ -1,5 +1,6 @@
 #!/bin/bash --login
 
+#SBATCH --job-name="cube"
 #SBATCH --nodes=1
 #SBATCH --time=00:30:00
 #SBATCH --partition=skylake
