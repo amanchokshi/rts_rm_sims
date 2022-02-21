@@ -181,7 +181,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    yaml_cfg = args.yaml_cfg
+    yaml_cfg = Path(args.yaml_cfg)
 
     # Make output dir if it doesn't exist
     Path(args.out_dir).mkdir(parents=True, exist_ok=True)
@@ -196,7 +196,7 @@ if __name__ == "__main__":
             )
 
     # Write calibration srclist
-    cal_srclist_name = f"{args.out_dir}/{config['obsid']}_{yaml_cfg.split('.')[0]}_cal.txt"
+    cal_srclist_name = f"{Path(args.out_dir)}/{config['obsid']}_{yaml_cfg.stem}_cal.txt"
     with open(cal_srclist_name, "w") as f:
         for s, params in config['sources'].items():
           
@@ -225,7 +225,7 @@ if __name__ == "__main__":
                 f.write('ENDSOURCE\n')
 
     # Write calibration srclist
-    sim_srclist_name = f"{args.out_dir}/{config['obsid']}_{yaml_cfg.split('.')[0]}_sim.txt"
+    sim_srclist_name = f"{Path(args.out_dir)}/{config['obsid']}_{yaml_cfg.stem}_sim.txt"
     with open(sim_srclist_name, "w") as f:
         for s, params in config['sources'].items():
             source_coords = SkyCoord(
