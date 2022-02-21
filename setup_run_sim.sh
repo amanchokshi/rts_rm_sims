@@ -10,23 +10,23 @@ echo -e '---------------------------\n'
 #                                   # 
 #####################################
 
-yml_cfg_path=${PWD}/rts_rm_pipeline/rts/srclists/srclist_cfgs/
+yml_cfg_dir=${PWD}/rts_rm_pipeline/rts/srclists/srclist_cfgs
 
-cd $yml_cfg_path || exit
+cd $yml_cfg_dir || exit
 srclist_files=(*.yaml)
 cd - >/dev/null
 
 PS3="Enter File Index, or [0] to exit: "
-echo "Select a RTS sourcelist config file:"
+echo "Select a RTS sourcelist config file from /rts_rm_pipeline/rts/srclists/srclist_cfgs/*.yaml"
 select file in "${srclist_files[@]}"; do
     if [[ $REPLY == "0" ]]; then
         exit
     elif [[ -z $file ]]; then
         echo 'Invalid choice, try again' >&2
     else
-        yml_cfg=${PWD}/${file}
+        yml_cfg=${yml_cfg_dir}/${file}
         cfg_file_name=$(echo ${file} | cut -d "." -f 1)
-        echo -e "RTS srclist config file is: ${yml_cfg}\n"
+        echo -e "RTS srclist config file is: ${file}\n"
         break
     fi
 done
@@ -86,11 +86,21 @@ do
  esac
 done
 
+
+#####################################
+#                                   #
+#      Output dir structure etc     #
+#                                   # 
+#####################################
+
 echo -en "Optional - enter suffix for output directory " && read -r SUF
 
 WORKDIR="${cfg_file_name}/1120082744_${SIM}_${CAL}_${SUF}"
-echo $WORKDIR
-# mkdir "$WORKDIR"
+
+mkdir -p "$WORKDIR"
+
+python ${PWD}/rts_rm_pipeline/rts/srclists/rts_srclist.py --yaml_cfg=${yml_cfg} --out_dir=${WORKDIR}
+
 # cp -r ./rts_rm_pipeline/* "$WORKDIR"
 # cp -r ./cuffs "$WORKDIR"
 # cd "$WORKDIR"
