@@ -1,0 +1,49 @@
+---
+# An attempt to use YAML as config files to make
+# RTS style simulation and calibration sourclists
+# Obsid: 1120082744
+
+obsid: 1120082744
+
+point_center:
+  ra: 10.44137913863797
+  dec: -26.78792973842179
+
+sim_freqs:
+  low_freq: 168.0e+6
+  high_freq: 232.0e+6
+  bw: 5.0e+3
+
+sources:
+  CAL001: 
+    type: "calibrator"
+    SI: -0.7
+    ref_freq: 200.0e+6
+    ref_I_Jy: 7
+    ref_V_Jy: 0
+    frac_pol: 0
+    rm: 0
+    del_ra: 0
+    del_dec: 0
+  
+  RM001:
+    type: "rm"
+    SI: -0.7
+    ref_freq: 200.0e+6
+    ref_I_Jy: 7
+    ref_V_Jy: 1
+    frac_pol: 0.2
+    rm: 20
+    del_ra: 2
+    del_dec: 2
+
+  RM002:
+    type: "rm"
+    SI: -0.7
+    ref_freq: 200.0e+6
+    ref_I_Jy: 7
+    ref_V_Jy: 1
+    frac_pol: 0.3
+    rm: 40
+    del_ra: 2
+    del_dec: 0
