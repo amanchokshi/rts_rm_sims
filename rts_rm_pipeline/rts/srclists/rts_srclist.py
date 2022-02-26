@@ -3,16 +3,13 @@ Create RTS style sourclists for calibration & simulations
 of polarised sources with given rotation measure
 """
 
-import sys
-sys.path.append("../../scripts")
-from rm_synth import get_IQUV_complex
-
 import yaml
 import numpy as np
 from pathlib import Path
 from astropy import units as u
 from astropy.coordinates import SkyCoord
 from matplotlib import pyplot as plt
+from rm_synth import get_IQUV_complex
 
 if __name__ == "__main__":
   
