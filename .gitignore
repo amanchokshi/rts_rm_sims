@@ -1,7 +1,7 @@
 __pycache__/
 .DS_Store
 *.DS_Store*
-rm_spec
-rm_spec/*
+data
+data/*
 1120082744*
 1120082744*/*
